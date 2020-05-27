@@ -115,6 +115,9 @@ namespace StarlightRiver.Abilities
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
+            //Dismounts player from mount if any ability (apart from Purify) is used
+            if (StarlightRiver.Dash.JustPressed || StarlightRiver.Wisp.JustPressed || StarlightRiver.Smash.JustPressed || StarlightRiver.Superdash.JustPressed)
+                player.mount.Dismount(player);
             //Activates one of the player's abilities on the appropriate keystroke.
             if (StarlightRiver.Dash.JustPressed) { triggersSet.Jump = false; dash.StartAbility(player); }
             if (StarlightRiver.Wisp.JustPressed) { wisp.StartAbility(player); }
